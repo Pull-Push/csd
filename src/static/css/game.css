@@ -1,0 +1,19 @@
+.gameBodyDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.indyRoundDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.indyRoundFighterDiv{
+    text-align: center;
+}
+
+.fighterToon{
+    width: 50%;
+}
