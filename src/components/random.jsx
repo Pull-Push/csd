@@ -8,15 +8,14 @@ const allFighters = toonData
 
 export default function Randomize(){
     const [gameFinal, setGameFinal] = useState(gameInit)
-    const [randomized, setRandomized] = useState([])
-    const [remaining, setRemaining] = useState(allFighters)
+
     // const location = useLocation() //THIS IS THE RIGHT WAY TO IMPORT THE DATA
     // const gameInit = location.state //THIS IS THE RIGHT WAY TO IMPORT THE DATA
     useEffect(() =>{
-        randomizeSetup()
+        randomizeSetup();
         console.log('UE gameFinal', gameFinal)
-        // console.log('remaining', remaining)
-    }, [gameFinal])
+    },[gameFinal]);
+    
 
     function randomizeSetup(){
         let tempGameFinal = gameFinal
@@ -28,8 +27,9 @@ export default function Randomize(){
                 tempGameFinal[x].random.sort() //THIS WORKS TO SORT EACH RANDOMIZED ARRAY!!!
             }
         }
-        // TODO Need to compare all lists to remove dupes from player lists 
+        // TODO Need to compare all lists to remove dupes from player lists - DONE!!
         duplicateRemover(tempGameFinal)
+        assignRemaining(tempGameFinal)
         setGameFinal(tempGameFinal)
     }
 
@@ -58,13 +58,60 @@ export default function Randomize(){
     return tempGameFinal
 }
 
-    function assignRemaining(){
-        let tempRemain = []
-        let allGameFighters = []
+    function assignRemaining(tempGameFinal){
+        //BUILDOUT REMAINING FIGHTER LIST
+        let tempRemaining = []
+        const totalMatches = Math.floor(83/tempGameFinal.length)
+        // console.log('Total Matches', totalMatches)
+        allFighters.forEach((toon) => tempRemaining.push(toon.name))
+        // console.log('tempRemaining before', tempRemaining)
+        tempGameFinal.forEach((indy) => {
+            // console.log('fighter length', indy.random.length)
+            indy.random.forEach((fighterToRemove) => {
+                // console.log('indy', indy, 'fighter', fighterToRemove[1])
+                tempRemaining = tempRemaining.filter((fighter) => fighter !== fighterToRemove[1])
+            })
+        })
+        // RANDOMIZE REMAINING FIGHTERS
+        let currentIndex = tempRemaining.length
+            while(currentIndex !== 0){
+                // Pick a remaining element...
+                let randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                
+                [tempRemaining[currentIndex], tempRemaining[randomIndex]] = [
+                tempRemaining[randomIndex], tempRemaining[currentIndex]];
+                }
+                // console.log('temp remaining', tempRemaining)
 
-        console.log('all game fighters', allGameFighters)
-        console.log('tempRemain', tempRemain)
-    }
+            // BUILD UP REMAINING PLAYER POOL
+                tempGameFinal.forEach((indy) =>{
+                    if(indy.random.length > totalMatches){
+                        let toBeSpliced = indy.random.length - 20
+                        // console.log(indy.name, 'TOO MANY FIGHTERS BY', toBeSpliced)
+                        let excess = indy.random.splice(20, toBeSpliced)
+                        // console.log('excess', excess)
+                        excess.forEach((overflow) => tempRemaining.push(overflow[1]))
+                    }
+                })
+
+            // EVEN OUT PLAYER LISTS
+                tempGameFinal.forEach((indy)=>{
+                    if(indy.random.length < totalMatches){
+                        let toBeAdded = totalMatches - indy.random.length
+                        // console.log(indy.name, 'has too few fighters by', toBeAdded)
+                        let addedFighters = tempRemaining.splice(0, toBeAdded)
+                        // console.log('added fighters', addedFighters)
+                        addedFighters.forEach((fighter) =>{
+                            indy.random.push([Math.random(), fighter])
+                        })
+                    }
+                })
+                // console.log('temp remaining after cut', tempRemaining)
+                // console.log('tempGameFinal after adding', tempGameFinal)
+        }
+
+
 
     return(
         <div className="randomMainDiv">
