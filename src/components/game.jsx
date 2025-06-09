@@ -37,7 +37,7 @@ export default function Game(){
 
     useEffect(()=>{
         if(!(gamePlayers.length === 0)){
-            // console.log('game main state', gameMainState)
+            console.log('game main state', gameMainState)
         }
     },[gameMainState])
 
@@ -46,7 +46,7 @@ export default function Game(){
         if(gamePlayers.length === 0){
             console.log('waiting...')
         }else{
-            // console.log('gameplayers in init', gamePlayers)
+            console.log('gameplayers in init', gamePlayers)
             // console.log('gamePlayers in init', gamePlayers[0].random.length)
             let roundFighters = []
             let totalFighters = gamePlayers[0].random.length
@@ -62,11 +62,14 @@ export default function Game(){
                     roundFighters[x][`round_${x+1}`].push({'id': y.id , 'name':y.name, 'fighter':y.random[x]})
                 }
             }
-            console.log('final roundFighters is', roundFighters)
+            // console.log('final roundFighters is', roundFighters)
+            setGameMainState(prev => ({...prev, gamePlayers: gamePlayers}))
             setGameMainState(prev => ({...prev, roundFighters: roundFighters }))
         }
     }
+
     function handleRoundChange(newRound){
+        setGameMainState(prev => ({...prev, roundNumber:newRound}))
         setCurrentRoundNumber(newRound)
     }
 
@@ -92,7 +95,6 @@ export default function Game(){
             </div>
                 <h2>ROUND {currentRoundNumber+1}</h2>
             <div className="gameBodyDiv">
-                {console.log('current round fighters', currentRoundFighters)}
                 {currentRoundFighters.length === 0 ? (
                     <h2> LOADING....</h2>
                 ) : (

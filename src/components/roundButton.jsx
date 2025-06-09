@@ -4,7 +4,7 @@ export default function RoundButton(props){
     let currentRound = props.roundNumber;
     let totalRounds = props.totalFights - 1
 
-    console.log('total rounds in button', totalRounds)
+    // console.log('total rounds in button', totalRounds)
     function handleRoundChange(e){
     let newRound = currentRound;
         if(e.target.innerText === 'Next Round' && currentRound < totalRounds){
@@ -14,7 +14,7 @@ export default function RoundButton(props){
     }
     props.onRoundChange(newRound)
 }
-    console.log('round button', props)
+    // console.log('round button', props)
     return(
         <div className="roundButtonMainDiv">
             <button onClick={handleRoundChange}>Previous Round</button>

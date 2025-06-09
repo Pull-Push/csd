@@ -10,7 +10,6 @@ export function randomizeSetup(gameinfo) {
 	for (let x = 0; x < tempGameFinal.length; x++) {
 		let rands = [];
 		if(tempGameFinal[x].chosen_fighters.length === 0){
-			console.log('found a nons selected')
 			for(let y of noneSelect){
 			rands.push([Math.random(), y]);
 			tempGameFinal[x].random = rands;
@@ -18,17 +17,16 @@ export function randomizeSetup(gameinfo) {
 			}
 		} else{
 		for (let y of tempGameFinal[x].chosen_fighters) {
-			console.log('found a selected list');
 			rands.push([Math.random(), y]);
 			tempGameFinal[x].random = rands;
 			tempGameFinal[x].random.sort(); //THIS WORKS TO SORT EACH RANDOMIZED ARRAY!!!
 		}
 	}
 	}
-	console.log('temp game final', tempGameFinal)
+	// console.log('temp game final', tempGameFinal)
 	duplicateRemover(tempGameFinal);
 	assignRemaining(tempGameFinal);
-	console.log("temp game final after assigning", tempGameFinal);
+	// console.log("temp game final after assigning", tempGameFinal);
 	return tempGameFinal;
 }
 
@@ -106,7 +104,7 @@ function assignRemaining(tempGameFinal) {
 	tempGameFinal.forEach((indy) => {
 		if (indy.random.length > totalMatches) {
 			let toBeSpliced = indy.random.length - totalMatches;
-			console.log(indy.name, 'TOO MANY FIGHTERS BY', toBeSpliced)
+			// console.log(indy.name, 'TOO MANY FIGHTERS BY', toBeSpliced)
 			let excess = indy.random.splice(totalMatches, toBeSpliced);
 			// console.log('excess', excess)
 			excess.forEach((overflow) => tempRemaining.push(overflow[1]));
