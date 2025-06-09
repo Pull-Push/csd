@@ -9,8 +9,8 @@ export default function Dashboard() {
 
 
 	useEffect(() =>{
-		console.log('current player list is', playerList)
-		console.log('currently editing position', playerList[selected])
+		// console.log('current player list is', playerList)
+		// console.log('currently editing position', playerList[selected])
 	}, [playerList, selected])
 
 
