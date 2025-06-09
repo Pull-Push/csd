@@ -11,7 +11,7 @@ export function randomizeSetup(gameinfo) {
 		let rands = [];
 		if(tempGameFinal[x].chosen_fighters.length === 0){
 			for(let y of noneSelect){
-			rands.push([Math.random(), y]);
+			rands.push([Math.random()+10, y]);
 			tempGameFinal[x].random = rands;
 			tempGameFinal[x].random.sort(); //THIS WORKS TO SORT EACH RANDOMIZED ARRAY!!!
 			}
@@ -23,7 +23,7 @@ export function randomizeSetup(gameinfo) {
 		}
 	}
 	}
-	// console.log('temp game final', tempGameFinal)
+	console.log('temp game final', tempGameFinal)
 	duplicateRemover(tempGameFinal);
 	assignRemaining(tempGameFinal);
 	// console.log("temp game final after assigning", tempGameFinal);
