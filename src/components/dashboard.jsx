@@ -20,7 +20,8 @@ export default function Dashboard() {
 			let gameFighter = {
 				'id': x,
 				'name' : 'Player ' + x,
-				'chosen_fighters' : []
+				'chosen_fighters' : [], 
+				'wins':0
 			}
 			tempGameFighters.push(gameFighter)
 		}
@@ -50,12 +51,8 @@ export default function Dashboard() {
     });
 	}
 
-	// function handleSave(){
-	// 	navigate('/game' , {state:playerList})
-	// }
-
-		function handleSave(){
-		navigate('/random' , {state:playerList})
+	function handleSave(){
+		navigate('/game' , {state:playerList})
 	}
 
 	return (

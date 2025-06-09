@@ -3,20 +3,23 @@ import { useLocation } from "react-router-dom";
 import { gameInitData } from "../data/gamedatasample";
 import { toonData } from "../data/toondata";
 
-const gameInit = gameInitData
+
+// TODO retool this entire file into the util folder
+
+// const gameInit = gameInitData  //gameInitData used for testing purposes only
 const allFighters = toonData
 
 export default function Randomize(){
+    const location = useLocation() //THIS IS THE RIGHT WAY TO IMPORT THE DATA
+    const gameInit = location.state //THIS IS THE RIGHT WAY TO IMPORT THE DATA
     const [gameFinal, setGameFinal] = useState(gameInit)
 
-    // const location = useLocation() //THIS IS THE RIGHT WAY TO IMPORT THE DATA
-    // const gameInit = location.state //THIS IS THE RIGHT WAY TO IMPORT THE DATA
     useEffect(() =>{
         randomizeSetup();
         console.log('UE gameFinal', gameFinal)
     },[gameFinal]);
     
-
+    // TODO Set up error handling for zero players selected
     function randomizeSetup(){
         let tempGameFinal = gameFinal
         for(let x=0; x<tempGameFinal.length; x++){
@@ -27,7 +30,6 @@ export default function Randomize(){
                 tempGameFinal[x].random.sort() //THIS WORKS TO SORT EACH RANDOMIZED ARRAY!!!
             }
         }
-        // TODO Need to compare all lists to remove dupes from player lists - DONE!!
         duplicateRemover(tempGameFinal)
         assignRemaining(tempGameFinal)
         setGameFinal(tempGameFinal)
