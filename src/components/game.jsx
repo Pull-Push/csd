@@ -1,6 +1,6 @@
 import {React, use, useEffect, useState} from "react";
 import { useLocation } from "react-router-dom";
-import '../static/css/game.css'
+import styles from '../static/css/Game.module.css'
 import RoundButton from "./roundButton";
 import { randomizeSetup } from "../utils/randomize";
 import MatchHistory from "./matchHistory";
@@ -83,37 +83,39 @@ export default function Game(){
             'fighters':currentRoundFighters,
             'winnerIndex':Number(winnerIndex)
         }
+        let playerToUpdate = gameMainState.gamePlayers[Number(winnerIndex)]
+        let updatedPlayer = playerToUpdate.wins += 1
         setMatchHistory(prev => [...prev, currMatchHistory])
-        handleRoundChange(currentRoundNumber + 1)
+        handleRoundChange(currentRoundNumber +1 )
     }
     
     // const finalSetup = gameInit()
 
     return(
-        <div className="gameMainDiv">
+        <div className={styles.gameMainDiv}>
             <div className="gameHeaderDiv">
-                <img id="headerLogo" src={require("../static/imgs/assets/logo_header.png")} alt="header" />
+                <img id={styles.headerLogo} src={require("../static/imgs/assets/logo_header.png")} alt="header" />
                 
             </div>
                 <h2>ROUND {currentRoundNumber+1}</h2>
-                <div className="winsMainDiv">
+                <div className={styles.winsMainDiv}>
                     {gameMainState.gamePlayers.map((indy, key) =>(
-                        <div className="winIndyDiv" key={key}>
+                        <div className={styles.winIndyDiv} key={key}>
                             <h2>{indy.name}</h2>
                             <h3>WINS:{indy.wins}</h3>
                         </div>
                     ))}
                 </div>
-            <div className="gameBodyDiv">
+            <div className={styles.gameBodyDiv}>
                 {/* {console.log(currentRoundFighters)} */}
                 {currentRoundFighters.length === 0 ? (
                     <h2> LOADING....</h2>
                 ) : (
                     currentRoundFighters.map((indy, index) =>(
-                        <div className='indyRoundDiv' key={index}>
-                            <div className='indyRoundFighterDiv'>
+                        <div className={styles.indyRoundDiv} key={index}>
+                            <div className={styles.indyRoundFighterDiv}>
                                 <p>{indy.name}</p>
-                                <img className='fighterToon' src={require(`../static/imgs/LARGE_PHOTO/${indy.fighter[1]}_BIG.jpg`)} alt={indy.fighter}/>
+                                <img className={styles.fighterToon} src={require(`../static/imgs/LARGE_PHOTO/${indy.fighter[1]}_BIG.jpg`)} alt={indy.fighter}/>
                                 <h4>{indy.fighter[1]}</h4>
                                 <button onClick={(e)=> handleWinner(e)} value={[index]}>WINNER!</button>
                             </div>
@@ -128,7 +130,7 @@ export default function Game(){
                 < RoundButton roundNumber={currentRoundNumber} totalFights={gamePlayers[0].random.length} onRoundChange={handleRoundChange}/>
             )
             }
-            <div className="gameLowerDiv">
+            <div className={styles.gameLowerDiv}>
                 {matchHistory.length === 0 ?(
                     <p>No History Yet....</p>
                 ):(

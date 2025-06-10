@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { toonData } from "../data/toondata";
-import '../static/css/dashbord.css'
+import styles from '../static/css/Dashboard.module.css'
 import { useNavigate } from "react-router-dom";
 export default function Dashboard() {
 	const [selected, setSelected ] =useState(0)
@@ -56,8 +56,8 @@ export default function Dashboard() {
 	}
 
 	return (
-		<div className="dashboardMain">
-			<img id="headerLogo" src={require("../static/imgs/assets/logo_header.png")} alt="header" />
+		<div className={styles.dashboardMain}>
+			<img id={styles.headerLogo} src={require("../static/imgs/assets/logo_header.png")} alt="header" />
 			<label htmlFor="playerCount">How Many Players</label>
 			<select name="playerCount" id="playerCount" onChange={(e) => handlePlayerChange(e)}>
 				<option value="2">2</option>
@@ -69,15 +69,15 @@ export default function Dashboard() {
 				<option value="8">8</option>
 			</select>
 
-			<div className="playerDiv"> 
+			<div className={styles.playerDiv}> 
 			{playerList.map((player, key) => (
-				<div className='playerIndyDiv' key={key}>
+				<div className={styles.playerIndyDiv} key={key}>
 					<h4>{player.name}</h4>
 					<label htmlFor="selected">Selected</label>
-					<input type="radio" name="selected" id="playerSelect" value={key} onClick={(e) => handleSelect(e)}/>
-					<div className="playerToonContainerDiv">
+					<input type="radio" name="selected" id={styles.playerSelect} value={key} onClick={(e) => handleSelect(e)}/>
+					<div className={styles.playerToonContainerDiv}>
 					{player.chosen_fighters.map((toon, index) => (
-						<div className="playerToonDiv" key={index}>
+						<div className={styles.playerToonDiv} key={index}>
 								<p>{index+1}) {toon}</p>
 							</div>
 					))}
@@ -87,11 +87,11 @@ export default function Dashboard() {
 			))}
 			</div>
 			<button onClick={handleSave}>READY!</button>
-		<div className="fighterMain">
+		<div className={styles.fighterMain}>
 			{toonData.map((data, key) => (
-				<div className="toonDiv" key={key} onClick={() => handleClick(data.name)}>
+				<div className={styles.toonDiv} key={key} onClick={() => handleClick(data.name)}>
 					{/* <p>{data.id}</p> */}
-					<img className="toonAvatar" src={require(`../static/imgs/SMALL_PHOTO/${data.name}.jpg`)} alt={data.name} />
+					<img className={styles.toonAvatar} src={require(`../static/imgs/SMALL_PHOTO/${data.name}.jpg`)} alt={data.name} />
 					<p>{data.name.toLocaleUpperCase()}</p>
 				</div>
 			))}
