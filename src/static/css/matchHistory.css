@@ -1,0 +1,16 @@
+.matchHistoryMainDiv{
+    display: flex;
+    flex-direction: column;
+}
+.singleRoundDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+    text-align: center;
+
+}
+
+.roundWinner{
+    border: 2px solid gold;
+}

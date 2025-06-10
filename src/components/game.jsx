@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import '../static/css/game.css'
 import RoundButton from "./roundButton";
 import { randomizeSetup } from "../utils/randomize";
+import MatchHistory from "./matchHistory";
 
 
 
@@ -12,9 +13,11 @@ export default function Game(){
         
     const [currentRoundNumber, setCurrentRoundNumber] = useState(0)
     const [gameMainState, setGameMainState] = useState({'gamePlayers':[], 'roundFighters':[], 'roundNumber':currentRoundNumber})
-    const [winners, setWinners ] = useState([])
+    const [wins, setWins ] = useState([])
     const [gamePlayers , setGamePlayers ] = useState([])
-    
+    const [matchHistory, setMatchHistory] = useState([])
+
+
     // const testPlayers = [{'id':1, 'name':'Player 1', 'chosen_fighters':['Mario', 'Link', 'Donkey Kong', 'Samus']},{'id':2, 'name':'Player 2', 'chosen_fighters':['Samus', 'Ice Climbers', 'Pit']},{'id':3, 'name':'Player 3', 'chosen_fighters':['Wario', 'Luigi', 'Marth']}]
     
     const currentRoundKey = `round_${currentRoundNumber + 1}`
@@ -74,15 +77,14 @@ export default function Game(){
     }
 
     function handleWinner(e){
-        // const roundWinner = [finalSetup[currentRoundNumber][`round_${currentRoundNumber + 1}`]]
-        // for(let x of roundWinner[0]){
-        //     if(e.target.value === x.fighter){
-        //         x['winner'] = true
-        //     }else{
-        //         x['winner'] = false
-        //     }
-        // }
-        // setWinners(prev => [...prev, roundWinner])
+        let winnerIndex = e.target.value;
+        let currMatchHistory = {
+            'round':currentRoundNumber+1,
+            'fighters':currentRoundFighters,
+            'winnerIndex':Number(winnerIndex)
+        }
+        setMatchHistory(prev => [...prev, currMatchHistory])
+        handleRoundChange(currentRoundNumber + 1)
     }
     
     // const finalSetup = gameInit()
@@ -94,7 +96,16 @@ export default function Game(){
                 
             </div>
                 <h2>ROUND {currentRoundNumber+1}</h2>
+                <div className="winsMainDiv">
+                    {gameMainState.gamePlayers.map((indy, key) =>(
+                        <div className="winIndyDiv" key={key}>
+                            <h2>{indy.name}</h2>
+                            <h3>WINS:{indy.wins}</h3>
+                        </div>
+                    ))}
+                </div>
             <div className="gameBodyDiv">
+                {/* {console.log(currentRoundFighters)} */}
                 {currentRoundFighters.length === 0 ? (
                     <h2> LOADING....</h2>
                 ) : (
@@ -104,7 +115,7 @@ export default function Game(){
                                 <p>{indy.name}</p>
                                 <img className='fighterToon' src={require(`../static/imgs/LARGE_PHOTO/${indy.fighter[1]}_BIG.jpg`)} alt={indy.fighter}/>
                                 <h4>{indy.fighter[1]}</h4>
-                                <button onClick={(e)=> handleWinner(e)} value={indy.fighter}>WINNER!</button>
+                                <button onClick={(e)=> handleWinner(e)} value={[index]}>WINNER!</button>
                             </div>
                         </div>
                     ))
@@ -118,15 +129,12 @@ export default function Game(){
             )
             }
             <div className="gameLowerDiv">
-                {winners.map((round, index) =>(
-                    <div className="winnerMainDiv">
-                        <div className="winnerIndyDiv" key={index}>
-                        <p>{round.fighter}</p>
-                        <p>{round.name}</p>
-                        </div>
-                    </div>
-                ))}
-                <p>fight result table will eventuall go here</p>
+                {matchHistory.length === 0 ?(
+                    <p>No History Yet....</p>
+                ):(
+                    <MatchHistory history={matchHistory}/>
+                )
+            }
             </div>
         </div>
         
