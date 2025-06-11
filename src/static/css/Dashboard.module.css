@@ -55,8 +55,26 @@ h2, .playerCount{
 
 }
 
+.selected{
+    color: ghostwhite;
+    font-size: larger;
+    margin-right: 15px;
 
+}
 
+.startButton{
+    margin: 10px;
+    height: 75px;
+    background-color: #1E3F6A;
+    color: ghostwhite;
+    font-size: larger;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.startButton:hover{
+    position: relative;
+    bottom: 1px;
+    box-shadow: 5px 5px 5px black;
+}
 
 .dashboardMain{
     width: 100%;
@@ -94,7 +112,7 @@ h2, .playerCount{
     justify-content: center;
     gap: 5px;
     flex-wrap: wrap;
-    background-color: darkgray;
+    background-color:#0F2135
 }
 .toonDiv{
     display: flex;

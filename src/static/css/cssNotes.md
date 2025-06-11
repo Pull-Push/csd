@@ -1,5 +1,7 @@
 main background
 #0F2135
+buttons
+background-color: #1E3F6A;
 
 
 character select

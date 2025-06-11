@@ -1,19 +1,136 @@
+/* p{
+    color: ghostwhite;
+    font-size: larger;
+} */
+.player1{
+    color: #E64F36;
+}
+
+.player2{
+    color:#3C7CF2;
+}
+
+.player3{
+    color:#E3AC02
+
+}
+.player4{
+    color:#1A8E2A
+
+}
+.player5{
+    color:#E46F20
+
+}
+.player6{
+    color:#3BA4DC
+
+}
+.player7{
+    color:#EB4D8C
+
+}
+.player8{
+    color:#5F45B4
+
+}
+
+.gameHeaderDiv{
+    height: 150px;
+    width: 95%;
+    margin: 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#headerLogo{
+    height: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+.roundNumber{
+    text-align: center;
+    font-size: xx-large;
+}
+
 .gameBodyDiv{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
 
 }
+
+.winsMainDiv{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.winIndyDiv h3{
+    width: 150px;
+    text-align: center;
+}
+
 
 .indyRoundDiv{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
+
+.indyRoundDiv h2{
+    font-size: xx-large;
+}
+
+.indyRoundDiv h4{
+    font-size: larger;
+
+}
+
 .indyRoundFighterDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     text-align: center;
+    flex-wrap: wrap;
 }
+
+.indyRoundFighterDiv img{
+    height: 150px;
+    width: auto;
+}
+
 
 .fighterToon{
     width: 50%;
+}
+
+.roundButtonDiv{
+    display: flex;
+    justify-content: center;
+}
+
+
+.roundButton{
+    margin: 25px;
+    height: 50px;
+    background-color: #1E3F6A;
+    border-radius: 10px;
+    color: ghostwhite;
+    font-size: larger;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.roundButton:hover{
+    position: relative;
+    bottom: 1px;
+    box-shadow: 5px 5px 5px black;
 }

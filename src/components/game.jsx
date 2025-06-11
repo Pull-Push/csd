@@ -93,19 +93,11 @@ export default function Game(){
 
     return(
         <div className={styles.gameMainDiv}>
-            <div className="gameHeaderDiv">
-                <img id={styles.headerLogo} src={require("../static/imgs/assets/logo_header.png")} alt="header" />
-                
+            <div className={styles.gameHeaderDiv}>
+                <img id={styles.headerLogo} src={require("../static/imgs/assets/logo_header.png")} alt="header" /> 
             </div>
-                <h2>ROUND {currentRoundNumber+1}</h2>
-                <div className={styles.winsMainDiv}>
-                    {gameMainState.gamePlayers.map((indy, key) =>(
-                        <div className={styles.winIndyDiv} key={key}>
-                            <h2>{indy.name}</h2>
-                            <h3>WINS:{indy.wins}</h3>
-                        </div>
-                    ))}
-                </div>
+                <h2 className={styles.roundNumber}>ROUND {currentRoundNumber+1}</h2>
+
             <div className={styles.gameBodyDiv}>
                 {/* {console.log(currentRoundFighters)} */}
                 {currentRoundFighters.length === 0 ? (
@@ -114,29 +106,37 @@ export default function Game(){
                     currentRoundFighters.map((indy, index) =>(
                         <div className={styles.indyRoundDiv} key={index}>
                             <div className={styles.indyRoundFighterDiv}>
-                                <p>{indy.name}</p>
+                                <h2 className={styles[`player${index+1}`]}>{indy.name}</h2>
                                 <img className={styles.fighterToon} src={require(`../static/imgs/LARGE_PHOTO/${indy.fighter[1]}_BIG.jpg`)} alt={indy.fighter}/>
-                                <h4>{indy.fighter[1]}</h4>
-                                <button onClick={(e)=> handleWinner(e)} value={[index]}>WINNER!</button>
+                                <h4 className={styles[`player${index+1}`]}>{indy.fighter[1]}</h4>
+                                <button onClick={(e)=> handleWinner(e)} value={index}>WINNER!</button>
                             </div>
                         </div>
                     ))
                 )
-            }
+                }
+            </div>                
+            <div className={styles.winsMainDiv}>
+                {gameMainState.gamePlayers.map((indy, key) =>(
+                    <div className={styles.winIndyDiv} key={key}>
+                        {/* <h2>{indy.name}</h2> */}
+                        <h3 className={styles[`player${key+1}`]}>WINS: {indy.wins}</h3>
+                    </div>
+                ))}
             </div>
+            <div className={styles.roundButtonDiv}>
             {currentRoundFighters.length === 0 ? (
-                < RoundButton roundNumber={currentRoundNumber} onRoundChange={handleRoundChange}/>
+                <RoundButton roundNumber={currentRoundNumber} onRoundChange={handleRoundChange}/>
             ):(
-                < RoundButton roundNumber={currentRoundNumber} totalFights={gamePlayers[0].random.length} onRoundChange={handleRoundChange}/>
-            )
-            }
+                <RoundButton roundNumber={currentRoundNumber} totalFights={gamePlayers[0].random.length} onRoundChange={handleRoundChange}/>
+            )}
+            </div>
             <div className={styles.gameLowerDiv}>
                 {matchHistory.length === 0 ?(
                     <p>No History Yet....</p>
                 ):(
                     <MatchHistory history={matchHistory}/>
-                )
-            }
+                )}
             </div>
         </div>
         

@@ -1,4 +1,7 @@
 import React from "react";
+import styles from '../static/css/Game.module.css'
+
+
 
 export default function RoundButton(props){
     let gameOver = false
@@ -20,8 +23,8 @@ export default function RoundButton(props){
     // console.log('round button', props)
     return(
         <div className="roundButtonMainDiv">
-            <button onClick={handleRoundChange}>Previous Round</button>
-            <button onClick={handleRoundChange}>Next Round</button>
+            <button className={styles.roundButton} onClick={handleRoundChange}>Previous Round</button>
+            <button className={styles.roundButton} onClick={handleRoundChange}>Next Round</button>
         </div>
     )
 }

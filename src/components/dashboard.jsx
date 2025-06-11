@@ -73,7 +73,7 @@ export default function Dashboard() {
 			{playerList.map((player, key) => (
 				<div className={styles.playerIndyDiv} key={key}>
 					<h2 className={styles[`player${player.id}`]}>{player.name}</h2>
-					<label htmlFor="selected">Selected</label>
+					<label className={styles.selected} htmlFor="selected">SELECT</label>
 					<input type="radio" name="selected" id={styles.playerSelect} value={key} onClick={(e) => handleSelect(e)}/>
 					<div className={styles.playerToonContainerDiv}>
 					{player.chosen_fighters.map((toon, index) => (
@@ -86,7 +86,7 @@ export default function Dashboard() {
 				</div>
 			))}
 			</div>
-			<button onClick={handleSave}>READY!</button>
+			<button className={styles.startButton} onClick={handleSave}>START SMASHDOWN</button>
 		<div className={styles.fighterMain}>
 			{toonData.map((data, key) => (
 				<div className={styles.toonDiv} key={key} onClick={() => handleClick(data.name)}>
