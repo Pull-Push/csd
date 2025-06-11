@@ -1,4 +1,6 @@
-COLORS FOR EACH PLAYER
+main background
+#0F2135
+
 
 character select
 p1

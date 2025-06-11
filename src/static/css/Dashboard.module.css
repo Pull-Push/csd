@@ -3,10 +3,60 @@
     src: url('../fonts/df-gothic-eb.ttf');
 }
 
-
 body{
-    background-color: darkgray;
+    background-color:#0F2135
 }
+
+#headerLogo{    
+    max-width: 55%;
+    height: auto;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+h2, .playerCount{
+    color: ghostwhite;
+}
+.playerCount{
+    font-size: larger;
+    margin-bottom: 7px;
+}
+
+.player1{
+    color: #E64F36;
+}
+
+.player2{
+    color:#3C7CF2;
+}
+
+.player3{
+    color:#E3AC02
+
+}
+.player4{
+    color:#1A8E2A
+
+}
+.player5{
+    color:#E46F20
+
+}
+.player6{
+    color:#3BA4DC
+
+}
+.player7{
+    color:#EB4D8C
+
+}
+.player8{
+    color:#5F45B4
+
+}
+
+
+
 
 .dashboardMain{
     width: 100%;
@@ -17,12 +67,6 @@ body{
     margin: 0 auto;
 }
 
-#headerLogo{    
-    max-width: 75%;
-    height: auto;
-    margin-left: 0;
-    margin-right: 0;
-}
 
 .playerDiv{
     width: 90%;

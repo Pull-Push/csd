@@ -58,7 +58,7 @@ export default function Dashboard() {
 	return (
 		<div className={styles.dashboardMain}>
 			<img id={styles.headerLogo} src={require("../static/imgs/assets/logo_header.png")} alt="header" />
-			<label htmlFor="playerCount">How Many Players</label>
+			<label className={styles.playerCount} htmlFor="playerCount">How Many Players</label>
 			<select name="playerCount" id="playerCount" onChange={(e) => handlePlayerChange(e)}>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -72,7 +72,7 @@ export default function Dashboard() {
 			<div className={styles.playerDiv}> 
 			{playerList.map((player, key) => (
 				<div className={styles.playerIndyDiv} key={key}>
-					<h4>{player.name}</h4>
+					<h2 className={styles[`player${player.id}`]}>{player.name}</h2>
 					<label htmlFor="selected">Selected</label>
 					<input type="radio" name="selected" id={styles.playerSelect} value={key} onClick={(e) => handleSelect(e)}/>
 					<div className={styles.playerToonContainerDiv}>
