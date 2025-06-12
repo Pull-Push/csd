@@ -14,12 +14,12 @@ export default function MatchHistory(props){
                         singleRound.winnerIndex === fighterIndex ? (
                             <div className={`${styles.singleRoundFIghterDiv} ${styles.roundWinner}`} key={fighterIndex}>
                                 <img className={styles.singleRoundAvatar} src={require(`../static/imgs/SMALL_PHOTO/${fighters.fighter[1]}.jpg`)} alt={fighters.fighter[1]} />
-                                <p>{fighters.fighter[1]}</p>
+                                <p className={styles[`player${fighterIndex+1}`]}>{fighters.fighter[1]}</p>
                             </div>
                         ) : (
-                            <div className={styles.singleRoundFIghterDiv} key={fighterIndex}>
+                            <div className={styles.singleRoundFighterDiv} key={fighterIndex}>
                                 <img className={styles.singleRoundAvatar} src={require(`../static/imgs/SMALL_PHOTO/${fighters.fighter[1]}.jpg`)} alt={fighters.fighter[1]} />
-                                <p>{fighters.fighter[1]}</p>
+                                <p className={styles[`player${fighterIndex+1}`]}>{fighters.fighter[1]}</p>
                             </div>
                         )
                     )}
