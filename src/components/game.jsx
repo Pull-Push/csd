@@ -1,4 +1,4 @@
-import {React, use, useEffect, useState} from "react";
+import {React, useEffect, useState} from "react";
 import { useLocation } from "react-router-dom";
 import styles from '../static/css/Game.module.css'
 import RoundButton from "./roundButton";
@@ -13,7 +13,6 @@ export default function Game(){
         
     const [currentRoundNumber, setCurrentRoundNumber] = useState(0)
     const [gameMainState, setGameMainState] = useState({'gamePlayers':[], 'roundFighters':[], 'roundNumber':currentRoundNumber})
-    const [wins, setWins ] = useState([])
     const [gamePlayers , setGamePlayers ] = useState([])
     const [matchHistory, setMatchHistory] = useState([])
 
