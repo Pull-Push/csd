@@ -1,0 +1,14 @@
+.gameOverHeader{
+    height: 150px;
+    width: 95%;
+    margin: 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#headerLogo{
+    height: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
