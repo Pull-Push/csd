@@ -24,7 +24,6 @@ export default function Game(){
     const currentRoundFighters = gameMainState.roundFighters[currentRoundNumber]?.[currentRoundKey]|| []
 
     useEffect(() =>{
-        // console.log('first useEffect ran')
         const fetchGameData = async () => {
         const data = await randomizeSetup(gameInfo);
        // Perform actions with the fetched data
@@ -38,18 +37,18 @@ export default function Game(){
         gameInit()
     }, [gamePlayers])
 
-    useEffect(()=>{
-        if(!(gamePlayers.length === 0)){
-            console.log('game main state', gameMainState)
-        }
-    },[gameMainState])
+    // useEffect(()=>{
+    //     if(!(gamePlayers.length === 0)){
+    //         console.log('game main state', gameMainState)
+    //     }
+    // },[gameMainState])
 
     
     function gameInit(){
         if(gamePlayers.length === 0){
-            console.log('waiting...')
+            console.log('waiting for data...')
         }else{
-            console.log('gameplayers in init', gamePlayers)
+            // console.log('gameplayers in init', gamePlayers)
             // console.log('gamePlayers in init', gamePlayers[0].random.length)
             let roundFighters = []
             let totalFighters = gamePlayers[0].random.length

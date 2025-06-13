@@ -31,7 +31,7 @@ export default function Dashboard() {
 	function handleSelect(e){
 		let currentlySelected = e.target.value
 		setSelected(currentlySelected)
-		console.log('in select handler', selected)
+		// console.log('in select handler', selected)
 	}
 
 

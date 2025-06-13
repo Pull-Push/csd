@@ -23,7 +23,7 @@ export function randomizeSetup(gameinfo) {
 		}
 	}
 	}
-	console.log('temp game final', tempGameFinal)
+	// console.log('temp game final', tempGameFinal)
 	duplicateRemover(tempGameFinal);
 	assignRemaining(tempGameFinal);
 	// console.log("temp game final after assigning", tempGameFinal);

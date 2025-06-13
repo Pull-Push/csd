@@ -4,7 +4,7 @@ import styles from '../static/css/MatchHistory.module.css'
 
 export default function MatchHistory(props){
     let matchHistory = props.history
-    console.log('match history', matchHistory)
+    // console.log('match history', matchHistory)
     return(
         <div className={styles.matchHistoryMainDiv}>
             {matchHistory.map((singleRound, index)=>(
