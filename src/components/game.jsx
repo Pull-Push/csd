@@ -1,5 +1,5 @@
 import {React, useEffect, useState} from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from '../static/css/Game.module.css'
 import RoundButton from "./roundButton";
 import { randomizeSetup } from "../utils/randomize";
@@ -10,13 +10,14 @@ import MatchHistory from "./matchHistory";
 export default function Game(){
     const location = useLocation()
     const gameInfo = location.state
-        
+    
     const [currentRoundNumber, setCurrentRoundNumber] = useState(0)
     const [gameMainState, setGameMainState] = useState({'gamePlayers':[], 'roundFighters':[], 'roundNumber':currentRoundNumber})
     const [gamePlayers , setGamePlayers ] = useState([])
     const [matchHistory, setMatchHistory] = useState([])
-
-
+    const [gameOver, setgameOver] = useState(false)
+    
+    const navigate = useNavigate();
     // const testPlayers = [{'id':1, 'name':'Player 1', 'chosen_fighters':['Mario', 'Link', 'Donkey Kong', 'Samus']},{'id':2, 'name':'Player 2', 'chosen_fighters':['Samus', 'Ice Climbers', 'Pit']},{'id':3, 'name':'Player 3', 'chosen_fighters':['Wario', 'Luigi', 'Marth']}]
     
     const currentRoundKey = `round_${currentRoundNumber + 1}`
@@ -36,11 +37,12 @@ export default function Game(){
         gameInit()
     }, [gamePlayers])
 
-    // useEffect(()=>{
-    //     if(!(gamePlayers.length === 0)){
-    //         console.log('game main state', gameMainState)
-    //     }
-    // },[gameMainState])
+    useEffect(()=>{
+        if(gameOver){
+            navigate('/gameover', { state:matchHistory})
+
+        }
+    },[gameOver])
 
     
     function gameInit(){
@@ -75,6 +77,7 @@ export default function Game(){
     }
 
     function handleWinner(e){
+        let totalFights = gamePlayers[0].random.length
         let winnerIndex = e.target.value;
         let currMatchHistory = {
             'round':currentRoundNumber+1,
@@ -85,9 +88,11 @@ export default function Game(){
         let updatedPlayer = playerToUpdate.wins += 1
         setMatchHistory(prev => [...prev, currMatchHistory])
         handleRoundChange(currentRoundNumber +1 )
+        if(totalFights + 1 === currentRoundNumber + 2){
+            let endGame = true;
+            setgameOver(endGame)
+        }
     }
-    
-    // const finalSetup = gameInit()
 
     return(
         <div className={styles.gameMainDiv}>

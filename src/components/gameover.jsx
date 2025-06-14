@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom"
 import MatchHistory from "./matchHistory"
 
 
-export default function TestGameOver(){
+export default function GameOver(){
     const location = useLocation()
     const matchHistory = location.state
 

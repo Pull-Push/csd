@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { toonData } from "../data/toondata";
 import styles from '../static/css/Dashboard.module.css'
 import { useNavigate } from "react-router-dom";
+
 export default function Dashboard() {
 	const [selected, setSelected ] =useState(0)
 	const [playerList, setPlayerList ] = useState([{'id':1, 'name':'Player 1', 'chosen_fighters':[], 'wins':0}, {'id':2, 'name':'Player 2', 'chosen_fighters':[], 'wins':0}]);
