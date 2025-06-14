@@ -7,6 +7,7 @@ import MatchHistory from "./matchHistory"
 export default function TestGameOver(){
     const location = useLocation()
     const matchHistory = location.state
+
     return(
         <div className={styles.gameOverMainDiv}>
             <div className={styles.gameOverHeader}>
@@ -17,7 +18,7 @@ export default function TestGameOver(){
             </div>
             <div className={styles.gameOverHistory}>
                 {matchHistory.length === 0 ?(
-                    <p>No History Yet....</p>
+                    <p>NO GAMES WERE PLAYED</p>
                 ):(
                     <MatchHistory history={matchHistory}/>
                 )}

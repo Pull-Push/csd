@@ -8,7 +8,8 @@ export default function TestRoundButton(props){
     let gameOver = false
     let currentRound = props.roundNumber;
     let totalRounds = props.totalFights
-
+    let matchHistory = props.matchHistory
+    
     // console.log('total rounds in button', totalRounds)
     function handleRoundChange(e){
         let newRound = currentRound;
@@ -23,7 +24,7 @@ export default function TestRoundButton(props){
 
         if(totalRounds+1 === currentRound + 2){
             console.log('GAME OVER!')
-            navigate('/testgameover')
+            navigate('/testgameover', { state:matchHistory})
         }
         
 

@@ -16,6 +16,7 @@ export default function TestGame(){
     const [gameMainState, setGameMainState] = useState({'gamePlayers':[], 'roundFighters':[], 'roundNumber':currentRoundNumber})
     const [gamePlayers , setGamePlayers ] = useState([])
     const [matchHistory, setMatchHistory] = useState([])
+    const [gameOver, setgameOver] = useState(false)
     
     const navigate = useNavigate();
     
@@ -38,11 +39,12 @@ export default function TestGame(){
         gameInit()
     }, [gamePlayers])
 
-    // useEffect(()=>{
-    //     if(!(gamePlayers.length === 0)){
-    //         console.log('game main state', gameMainState)
-    //     }
-    // },[gameMainState])
+    useEffect(()=>{
+        if(gameOver){
+            navigate('/testgameover', { state:matchHistory})
+
+        }
+    },[gameOver])
 
     
     function gameInit(){
@@ -87,20 +89,13 @@ export default function TestGame(){
         let playerToUpdate = gameMainState.gamePlayers[Number(winnerIndex)]
         let updatedPlayer = playerToUpdate.wins += 1
         setMatchHistory(prev => [...prev, currMatchHistory])
-        
         handleRoundChange(currentRoundNumber +1 )
         
-
-        //TODO CHANGE ALL OF THIS TO LOOK AT GAMEOVER
         if(totalFights + 1 === currentRoundNumber + 2){
-            setMatchHistory(prev => [...prev, currMatchHistory])
-            console.log('GAME OVER!')
-            console.log('matchHistory', matchHistory)
-            navigate('/testgameover', { state:matchHistory})
+            let endGame = true;
+            setgameOver(endGame)
         }
     }
-    
-    // const finalSetup = gameInit()
 
     return(
         <div className={styles.gameMainDiv}>
@@ -139,7 +134,7 @@ export default function TestGame(){
             {currentRoundFighters.length === 0 ? (
                 <TestRoundButton roundNumber={currentRoundNumber} onRoundChange={handleRoundChange}/>
             ):(
-                <TestRoundButton roundNumber={currentRoundNumber} totalFights={gamePlayers[0].random.length} onRoundChange={handleRoundChange}/>
+                <TestRoundButton matchHistory={matchHistory} roundNumber={currentRoundNumber} totalFights={gamePlayers[0].random.length} onRoundChange={handleRoundChange}/>
             )}
             </div>
             <div className={styles.gameLowerDiv}>
