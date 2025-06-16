@@ -20,7 +20,7 @@ export default function RoundButton(props){
     
         if(totalRounds+1 === currentRound + 2){
             console.log('GAME OVER!')
-            navigate('/gameover', { state:{ matchHistory, gamePlayers: gameMainState.gamePlayers }})
+            navigate('/gameover', { state:{ matchHistory: matchHistory, gamePlayers: gameMainState.gamePlayers }})
         }
         
     props.onRoundChange(newRound)
