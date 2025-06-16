@@ -39,7 +39,7 @@ export default function Game(){
 
     useEffect(()=>{
         if(gameOver){
-            navigate('/gameover', { state:matchHistory})
+            navigate('/gameover', { state: { matchHistory, gamePlayers: gameMainState.gamePlayers } })
 
         }
     },[gameOver])
@@ -131,7 +131,7 @@ export default function Game(){
             {currentRoundFighters.length === 0 ? (
                 <RoundButton roundNumber={currentRoundNumber} onRoundChange={handleRoundChange}/>
             ):(
-                <RoundButton roundNumber={currentRoundNumber} totalFights={gamePlayers[0].random.length} onRoundChange={handleRoundChange}/>
+                <RoundButton roundNumber={currentRoundNumber} gameMainState={gameMainState} totalFights={gamePlayers[0].random.length} onRoundChange={handleRoundChange}/>
             )}
             </div>
             <div className={styles.gameLowerDiv}>

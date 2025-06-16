@@ -8,8 +8,8 @@ export default function RoundButton(props){
     let currentRound = props.roundNumber;
     let totalRounds = props.totalFights
     let matchHistory = props.matchHistory
-    
-    // console.log('total rounds in button', totalRounds)
+    let gameMainState = props.gameMainState
+
     function handleRoundChange(e){
         let newRound = currentRound;
         if(e.target.innerText === 'Next Round' && currentRound <= totalRounds-1){
@@ -18,15 +18,13 @@ export default function RoundButton(props){
             newRound = currentRound - 1
         }
     
-
         if(totalRounds+1 === currentRound + 2){
             console.log('GAME OVER!')
-            navigate('/testgameover', { state:matchHistory})
+            navigate('/gameover', { state:{ matchHistory, gamePlayers: gameMainState.gamePlayers }})
         }
         
     props.onRoundChange(newRound)
     }
-    // console.log('round button', props)
     return(
         <div className="roundButtonMainDiv">
             <button className={styles.roundButton} onClick={handleRoundChange}>Previous Round</button>
