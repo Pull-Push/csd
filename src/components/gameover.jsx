@@ -22,6 +22,7 @@ export default function GameOver(){
             return 0;
         });
         console.log('game players sorted?', gamePlayers)
+        return gamePlayers
     }
 
     return(
@@ -31,17 +32,24 @@ export default function GameOver(){
             </div>
             <div className={styles.gameOverMainBody}>
                 <div className={styles.secondPlaceDiv}>
-                    <h3>Second Place Goes Here</h3>
-                    <h5>wins:xx</h5>
+                    <h3>{gamePlayers[1].name}</h3>
+                    <h5>WINS: {gamePlayers[1].wins}</h5>
                 </div>
                 <div className={styles.winnerDiv}>
-                    <h2>WINNER GOES HERE</h2>
-                    <h5>wins:xx</h5>
+                    <h2>{gamePlayers[0].name}</h2>
+                    <h5>WINS: {gamePlayers[0].wins}</h5>
                     {/* <p>maybe winning fighters?</p> */}
                 </div>
                 <div className={styles.thirdPlaceDiv}>
-                    <h4>if third place? it goes here</h4>
-                    <h5>wins:xx</h5>
+                    {gamePlayers[2] ? (
+                        <div>
+                            <h4>{gamePlayers[2].name}</h4>
+                            <h5>WINS: {gamePlayers[2].wins}</h5>
+                        </div>
+                    ):(
+                        <div>
+                        </div>
+                    )}
                 </div>
                 <div className={styles.remainingPlayerDiv}>
                     <p>if any other players, name here with wins</p>
