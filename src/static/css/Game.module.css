@@ -101,6 +101,7 @@
     align-items: center;
     text-align: center;
     flex-wrap: wrap;
+    font-family: 'futura';
 }
 
 .indyRoundFighterDiv img{

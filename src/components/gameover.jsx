@@ -11,11 +11,11 @@ export default function GameOver(){
     const {matchHistory,  gamePlayers} = location.state
 
     useEffect(() =>{
-        console.log('gamePlayers', gamePlayers)
-        console.log('match Histoy', matchHistory)
+        // console.log('gamePlayers', gamePlayers)
+        // console.log('match Histoy', matchHistory)
         compileResults()
-        console.log('sortedResults', sortedResults)
-        console.log('losers', losers)
+        // console.log('sortedResults', sortedResults)
+        // console.log('losers', losers)
     }, [sortedResults])
 
     function compileResults(){
