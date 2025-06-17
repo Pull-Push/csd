@@ -134,3 +134,8 @@
     bottom: 1px;
     box-shadow: 5px 5px 5px black;
 }
+
+.gameLowerDiv{
+    color: aliceblue;
+    text-align: center;
+}
