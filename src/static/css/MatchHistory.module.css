@@ -31,9 +31,6 @@
 
 }
 
-
-
-
 .matchHistoryMainDiv{
     display: flex;
     flex-direction: column;
@@ -74,6 +71,6 @@
     font-size: large;
 }
 
-.roundWinner p{
+/* .roundWinner p{
     color: gold;
-}
+} */

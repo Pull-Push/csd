@@ -1,3 +1,28 @@
+.player1{
+    color: #E64F36;
+}
+.player2{
+    color:#3C7CF2;
+}
+.player3{
+    color:#E3AC02
+}
+.player4{
+    color:#1A8E2A
+}
+.player5{
+    color:#E46F20
+}
+.player6{
+    color:#3BA4DC
+}
+.player7{
+    color:#EB4D8C
+}
+.player8{
+    color:#5F45B4
+}
+
 .gameOverHeader{
     height: 150px;
     width: 95%;
@@ -11,4 +36,50 @@
     height: 100%;
     margin-left: 0;
     margin-right: 0;
+}
+.gameOverMainBody{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 0 auto;
+}
+.gameOverPlacesDiv{
+    width: 95%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.winnerDiv{
+    font-size: xx-large;
+    color: gold;
+    width: 200px;
+}
+.winnerDiv h2{
+    color: gold;
+}
+.secondPlaceDiv{
+    font-size: x-large;
+    width: 200px;
+    color: silver;
+}
+.thirdPlaceDiv{
+    font-size: x-large;
+    width: 200px;
+    color: #775e39;
+}
+
+
+.remainingPlayerDiv{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.indyLoser{
+    color:aliceblue
 }
