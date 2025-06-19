@@ -205,7 +205,7 @@ export const toonData = [
     },    
     {
         'id':35,
-        'name':'Samus',
+        'name':'Wario',
         'sm_photo':'',
         'lg_photo':''
     },    

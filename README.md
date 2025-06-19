@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# 🎰 Smash Roulette
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A custom web app for the **SmashDown** game mode in *Super Smash Bros. Ultimate*. Smash Roulette lets players create customized fighter lists, randomizes matchups, and tracks progress through a full SmashDown session — no duplicates, no hassle.
 
-## Available Scripts
+## 🕹️ What It Does
 
-In the project directory, you can run:
+- Players create personalized fighter lists.
+- The app randomizes matchups round-by-round.
+- Duplicate picks between players? A random number decides who gets the fighter.
+- Unpicked characters are pooled and used to fill remaining matchups.
+- If no characters are selected, the full roster is used.
 
-### `npm start`
+Supports **2 to 8 players**, any number of character picks, and auto-calculates the maximum number of possible matches — true to SmashDown form.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- ✅ Fully randomized matchups based on your character list
+- ✅ Duplicate fighter conflict resolution
+- ✅ Unused character pool autofills
+- ✅ Automatic round tracking
+- ✅ Real-time win counts and results board
 
-### `npm test`
+## 🔧 Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React**
+- **JSX**
+- **JavaScript**
 
-### `npm run build`
+## 🚀 Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install dependencies and run the app:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ▶️ How to Use
 
-### `npm run eject`
+1. Select the number of players.
+2. Choose your character list(s).
+3. Click **Start** to generate matchups.
+4. After each match, select the winner.
+5. Smash Roulette auto-advances to the next round and updates the scoreboard.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🌐 Live Demo
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[👉 Try it now](https://csd-jeff-sokols-projects.vercel.app/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 👥 Contributors
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+None yet — solo project by [Jeff Sokol](https://github.com/jeffsokol).
 
-## Learn More
+## 📄 License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+None
