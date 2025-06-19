@@ -35,21 +35,46 @@ export default function Dashboard() {
 		// console.log('in select handler', selected)
 	}
 
-
 	function handleClick(e){
+		
 		setPlayerList(oldList => {
         // Create a copy of the player list
         const newList = [...oldList];
         // Create a copy of the player object to avoid mutating state directly
         const updatedPlayer = { ...newList[selected] };
-        if (!updatedPlayer.chosen_fighters.includes(e)) {
-            updatedPlayer.chosen_fighters = [...updatedPlayer.chosen_fighters, e];
+        if (!updatedPlayer.chosen_fighters.includes(e.name)) {
+            updatedPlayer.chosen_fighters = [...updatedPlayer.chosen_fighters, e.name];
+			styleElement(e.target, updatedPlayer)
         } else {
-            updatedPlayer.chosen_fighters = updatedPlayer.chosen_fighters.filter(fighter => fighter !== e);
+            updatedPlayer.chosen_fighters = updatedPlayer.chosen_fighters.filter(fighter => fighter !== e.name);
+			clearSelected(e.target)
         }
         newList[selected] = updatedPlayer;
         return newList;
     });
+	}
+
+	function styleElement(target, player){
+		let id = Number(player.id)
+		console.log(id)
+		let tag = target.tagName
+		if(tag === 'DIV'){
+			target.className = `${styles.toonDiv} ${styles['selectedToon' + id]}`
+			console.log(target.className.length)
+		}else{
+			let parent = target.parentElement
+			parent.className = `${styles.toonDiv} ${styles['selectedToon' + id]}`
+			console.log(parent.className.length)
+		}
+	}
+	function clearSelected(target){
+		let tag = target.tagName
+		if(tag === 'DIV'){
+			target.className = styles.toonDiv
+		}else{
+			let parent = target.parentElement
+			parent.className = styles.toonDiv
+		}
 	}
 
 	function handleSave(){
@@ -90,7 +115,7 @@ export default function Dashboard() {
 			<button className={styles.startButton} onClick={handleSave}>START SMASHDOWN</button>
 		<div className={styles.fighterMain}>
 			{toonData.map((data, key) => (
-				<div className={styles.toonDiv} key={key} onClick={() => handleClick(data.name)}>
+				<div className={styles.toonDiv} key={key} onClick={(e) => handleClick({e:e, target:e.target, name:data.name})}>
 					{/* <p>{data.id}</p> */}
 					<img className={styles.toonAvatar} src={require(`../static/imgs/SMALL_PHOTO/${data.name}.jpg`)} alt={data.name} />
 					<p>{data.name.toLocaleUpperCase()}</p>

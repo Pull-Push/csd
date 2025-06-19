@@ -71,8 +71,8 @@ h2, .playerCount{
     color: ghostwhite;
     font-size: larger;
     margin-right: 15px;
-
 }
+
 
 .startButton{
     margin: 10px;
@@ -142,11 +142,35 @@ h2, .playerCount{
     padding: 0px 5px;
     box-shadow: 5px 5px 5px black;
     background-color: whitesmoke;
-    
 }
 
 .toonDiv:hover{
     background-color: antiquewhite;
+}
+
+.selectedToon1{
+    background-color:#E64F36;
+}
+.selectedToon2{
+    background-color:#3C7CF2
+}
+.selectedToon3{
+    background-color:#E3AC02
+}
+.selectedToon4{
+    background-color:#1A8E2A
+}
+.selectedToon5{
+    background-color:#E46F20
+}
+.selectedToon6{
+    background-color:#3BA4DC
+}
+.selectedToon7{
+    background-color:#EB4D8C
+}
+.selectedToon8{
+    background-color:#5F45B4
 }
 
 .toonDiv p{
